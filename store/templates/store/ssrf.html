@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أداة معاينة الروابط - اختبار SSRF</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            direction: rtl;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h2 { color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
+        .input-group { margin: 20px 0; display: flex; gap: 10px; }
+        input[type="text"] {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        button {
+            padding: 12px 25px;
+            background-color: #e63946;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        button:hover { background-color: #c1121f; }
+        .result-box {
+            margin-top: 30px;
+            border: 2px solid #ff4d4d;
+            border-radius: 8px;
+            background: #fff5f5;
+            overflow: hidden;
+        }
+        .result-header {
+            background: #ff4d4d;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+        }
+        pre {
+            padding: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: monospace;
+            background: #1e1e1e;
+            color: #dcdcdc;
+            margin: 0;
+        }
+        .info { color: #666; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🔍 نظام معاينة المواقع (بيئة اختبار SSRF)</h2>
+    <p class="info">هذه الصفحة تسمح للسيرفر بجلب محتوى أي رابط خارجي ومعاينته.</p>
+
+    <form method="GET" class="input-group">
+        <input type="text" name="url" placeholder="أدخل الرابط هنا (مثلاً: http://127.0.0.1:8000/admin)" required>
+        <button type="submit">فحص الرابط</button>
+    </form>
+
+    {% if content %}
+        <div class="result-box">
+            <div class="result-header">استجابة السيرفر من العنوان: {{ target_url }}</div>
+            <pre>{{ content }}</pre>
+        </div>
+    {% endif %}
+
+    {% if error %}
+        <div style="color: red; margin-top: 20px; font-weight: bold;">
+            ⚠️ خطأ: {{ error }}
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>

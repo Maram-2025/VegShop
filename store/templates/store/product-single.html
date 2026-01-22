@@ -1,0 +1,92 @@
+{%extends 'store/main.html'%}
+{% load static %}
+{% block content %}
+<div class="hero-wrap hero-bread" style="background-image: url({% static 'images/bg_1.jpg'%});">
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-center justify-content-center">
+        <div class="col-md-9 ftco-animate text-center">
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="index.html">Product</a></span> <span>Product Single</span></p>
+          <h1 class="mb-0 bread">Product Single</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="ftco-section">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-6 mb-5 ftco-animate">
+                  <a href="{{product.image.url}}" class="image-popup"><img src="{{product.image.url}}" class="img-fluid" alt="Colorlib Template"></a>
+              </div>
+              <div class="col-lg-6 product-details pl-md-5 ftco-animate">
+                  <h3>{{product.name}}</h3>
+                 
+                  <p class="price"><span>${{product.price}}</span></p>
+                  <p>{{product.description}}</p>
+                      <div class="row mt-4">
+                          <div class="col-md-6">
+                              <div class="form-group d-flex">
+                  </div>
+                          </div>
+                          <div class="w-100"></div>
+                          
+                <div class="w-100"></div>
+                <div class="col-md-12">
+                    <p style="color: #000;">{{product.quantity}} available</p>
+                </div>
+            </div>
+            <p><a href="{% url 'add_to_cart' product.id %}"
+                class="btn btn-black py-3 px-5">Add to cart
+              </a></p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <section class="ftco-section">
+    <div class="container">
+
+        <h3 class="mb-4">Related Products</h3>
+
+        <div class="row">
+
+            {% for product in products %}
+                {% if product.image %}
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4 ftco-animate">
+                        <div class="product">
+
+                            <a href="{% url 'product-single' product.id %}" class="img-prod">
+                                <img class="img-fluid"
+                                     src="{{ product.image.url }}"
+                                     alt="{{ product.name }}">
+                                <div class="overlay"></div>
+                            </a>
+
+                            <div class="text py-3 pb-4 px-3 text-center">
+                                <h3>
+                                    <a href="{% url 'product-single' product.id %}">
+                                        {{ product.name }}
+                                    </a>
+                                </h3>
+
+                                <div class="pricing">
+                                    <p class="price">
+                                        <span class="price-sale">
+                                            {{ product.price }}$
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                {% endif %}
+            {% empty %}
+                <p>No Related Products</p>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+{% endblock  %}

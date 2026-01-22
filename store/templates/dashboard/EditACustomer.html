@@ -1,0 +1,52 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+<main class="content">
+<form method="post">
+    {% csrf_token %}
+    <div class="container-fluid p-0">
+
+        <div class="mb-3">
+            <h1 class="h3 d-inline align-middle">Edit a Customer</h1>
+
+        </div>
+    <div class="row">
+            <div class="col-12 col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">name</h5>
+                        </div>
+                        <div class="card-body">
+                            {{ form.name }}
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">phone</h5>
+                        </div>
+                        <div class="card-body">
+                            {{ form.phone }}
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Email</h5>
+                        </div>
+                        <div class="card-body">
+                           {{ form.email }}
+                        </div>
+                    </div>
+
+                  
+                    <div class="card">
+                        <div class="card-body">
+                            <button class="btn btn-success">Save</button>
+                        </div>
+                    </div>
+                </div>    
+</div>
+
+</form>
+</main>
+{% endblock content %}

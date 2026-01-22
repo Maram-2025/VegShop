@@ -1,0 +1,128 @@
+{%extends 'store/main.html'%}
+{% load static %}
+{% block content %}
+<div class="hero-wrap hero-bread" style="background-image: url({%static 'images/bg_1.jpg'%});">
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-center justify-content-center">
+        <div class="col-md-9 ftco-animate text-center">
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Cart</span></p>
+          <h1 class="mb-0 bread">My Cart</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<section class="ftco-section ftco-cart">
+          <div class="container">
+              <div class="row">
+              <div class="col-md-12 ftco-animate">
+                  <div class="cart-list">
+                      <table class="table">
+                          <thead class="thead-primary">
+                            <tr class="text-center">
+                              <th>&nbsp;</th>
+                              <th>&nbsp;</th>
+                              <th>Product name</th>
+                              <th>Price</th>
+                              <th>Quantity</th>
+                              <th>Total</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for item in items %}
+                            <tr class="text-center">
+                            
+                              <td class="product-remove">
+                                <a href="{% url 'remove_item' item.id %}">
+                                  <span class="ion-ios-close"></span>
+                                </a>
+                              </td>
+                            
+                              <td class="image-prod">
+                                <div class="img"
+                                     style="background-image:url({{ item.product.image.url }});">
+                                </div>
+                              </td>
+                            
+                              <td class="product-name">
+                                <h3>{{ item.product.name }}</h3>
+                              </td>
+                            
+                              <td class="price">${{ item.price }}</td>
+                            
+                              <td class="quantity">
+                                <form method="post" action="{% url 'update_quantity' item.id %}">
+                                  {% csrf_token %}
+                                  <input type="number" name="quantity"
+                                         value="{{ item.quantity }}"
+                                         min="1" class="form-control">
+                                  <button class="btn btn-sm btn-primary mt-1">Update</button>
+                                </form>
+                              </td>
+                            
+                              <td class="total">
+                                ${{ item.total_price }}
+                              </td>
+                              
+                            
+                            </tr>
+                            {% empty %}
+                            <tr>
+                              <td colspan="6" class="text-center">Cart is empty</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                            
+                        </table>
+                    </div>
+              </div>
+          </div>
+          <div class="row justify-content-end">
+              <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+                
+            
+                <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+                  
+                  <p><button class="btn btn-primary py-3 px-4" data-toggle="modal" data-target="#confirmModal">
+                    Confirm 
+                  </button>
+                  </p>
+              </div>
+          </div>
+          </div>
+</section>
+
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">confirm the order</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p>Are you sure to confirm the order</p>
+        <p><strong>After confirmation, the request will be trasferred to in progress</strong></p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Cancel
+        </button>
+
+        <form method="post" action="{% url 'confirm_order' %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary">
+           yes,sure
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock  %}

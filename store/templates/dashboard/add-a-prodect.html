@@ -1,0 +1,89 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+<main class="content">
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container-fluid p-0">
+
+        <div class="mb-3">
+            <h1 class="h3 d-inline align-middle">Add a new prodect</h1>
+
+        </div>
+    <div class="row">
+            <div class="col-12 col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">name</h5>
+                        </div>
+                        <div class="card-body">
+                            {{ form.name }}
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Description</h5>
+                        </div>
+                        <div class="card-body">
+                            {{ form.description }}
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Category</h5>
+                        </div>
+                        <div class="card-body">
+                            {{ form.category_id }}
+                        </div>
+                    </div>
+       </div>    
+
+       <div class="col-12 col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Price</h5>
+                        </div>
+                        <div class="card-body">
+                            {{ form.price }}
+                        </div>
+                    </div>
+                  
+
+                
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Quantity</h5>
+                        </div>
+                        <div class="card-body">
+                            {{ form.quantity }}
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Prodect image</h5>
+                        </div>
+                        <div class="card-body">
+                            {{ form.image }}
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                           <button type="submit"  class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+
+        </div>
+            
+
+            
+
+
+
+
+</div>
+
+</form>
+</main>
+{% endblock content %}

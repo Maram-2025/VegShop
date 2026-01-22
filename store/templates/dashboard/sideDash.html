@@ -1,0 +1,185 @@
+<nav id="sidebar" class="sidebar js-sidebar">
+    <div class="sidebar-content js-simplebar">
+        <a class="sidebar-brand" href="index.html">
+  <span class="align-middle">Shop Dashboard</span>
+</a>
+
+        <ul class="sidebar-nav">
+            <li class="sidebar-header">
+                Pages
+            </li>
+
+            <li class="sidebar-item active">
+                <a class="sidebar-link" href="{%url 'indexDash'%}">
+                 <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+               </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="{%url 'pages-sign-in'%}">
+              <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
+             </a>
+          </li>
+
+          <li class="sidebar-item">
+              <a class="sidebar-link" href="{%url 'register'%}">
+               <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
+              </a>
+          </li>
+
+            
+
+            <li class="sidebar">
+                <a class="sidebar-link" href="#" onclick="toggleMenu(event)">
+                  </a>
+                  <ul style="list-style:none; padding:0; margin:0; width:250px;">
+                  
+                    <li>
+                      <a href="#" 
+                         onclick="
+                           event.preventDefault();
+                           var sub = this.nextElementSibling;
+                           sub.style.display = (sub.style.display === 'block') ? 'none' : 'block';
+                         "
+                         style="display:block; padding:12px 20px; color:#fff; text-decoration:none; font-weight:bold;">
+                         Products ▾
+                      </a>
+                  
+                      <ul style="display:none; list-style:none; padding:0; margin:0;">
+                        <li>
+                          <a href="{%url 'listProdect'%}"
+                             style="display:block; padding:10px 40px; color:#fff; text-decoration:none;">
+                            Manage Products
+                          </a>
+                        </li>
+                  
+                        <li>
+                          <a href="{%url 'add-a-prodect'%}"
+                             style="display:block; padding:10px 40px; color:#fff; text-decoration:none;">
+                             Add a Product
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  
+                  </ul>
+                  
+            </li>
+
+            <li class="sidebar">
+                <a class="sidebar-link" href="#" onclick="toggleMenu(event)">
+                  </a>
+                  <ul style="list-style:none; padding:0; margin:0; width:250px;">
+                  
+                    <li>
+                      <a href="#" 
+                         onclick="
+                           event.preventDefault();
+                           var sub = this.nextElementSibling;
+                           sub.style.display = (sub.style.display === 'block') ? 'none' : 'block';
+                         "
+                         style="display:block; padding:12px 20px; color:#fff; text-decoration:none; font-weight:bold;">
+                         Categories ▾
+                      </a>
+                  
+                      <ul style="display:none; list-style:none; padding:0; margin:0;">
+                        <li>
+                          <a href="{%url 'Category-list'%}"
+                             style="display:block; padding:10px 40px; color:#fff; text-decoration:none;">
+                             Manage Categories
+                          </a>
+                        </li>
+                  
+                        <li>
+                          <a href="{%url 'add-a-category'%}"
+                             style="display:block; padding:10px 40px; color:#fff; text-decoration:none;">
+                             Add a Category
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  
+                  </ul>
+                  
+            </li>
+
+            <li class="sidebar">
+                <a class="sidebar-link" href="#" onclick="toggleMenu(event)">
+                  </a>
+                  <ul style="list-style:none; padding:0; margin:0; width:250px;">
+                  
+                    <li>
+                      <a href="#" 
+                         onclick="
+                           event.preventDefault();
+                           var sub = this.nextElementSibling;
+                           sub.style.display = (sub.style.display === 'block') ? 'none' : 'block';
+                         "
+                         style="display:block; padding:12px 20px; color:#fff; text-decoration:none; font-weight:bold;">
+                         Orders ▾
+                      </a>
+                  
+                      <ul style="display:none; list-style:none; padding:0; margin:0;">
+                        <li>
+                          <a href="{%url 'ListOrder'%}"
+                             style="display:block; padding:10px 40px; color:#fff; text-decoration:none;">
+                            Manage Orders
+                          </a>
+                        </li>
+                  
+                        <li>
+                          <a href="{%url 'AddAnOrder'%}"
+                             style="display:block; padding:10px 40px; color:#fff; text-decoration:none;">
+                             Add an Orders
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  
+                  </ul>
+                  
+            </li>
+
+            <li class="sidebar">
+                <a class="sidebar-link" href="#" onclick="toggleMenu(event)">
+                  </a>
+                  <ul style="list-style:none; padding:0; margin:0; width:250px;">
+                  
+                    <li>
+                      <a href="#" 
+                         onclick="
+                           event.preventDefault();
+                           var sub = this.nextElementSibling;
+                           sub.style.display = (sub.style.display === 'block') ? 'none' : 'block';
+                         "
+                         style="display:block; padding:12px 20px; color:#fff; text-decoration:none; font-weight:bold;">
+                         Customers ▾
+                      </a>
+                  
+                      <ul style="display:none; list-style:none; padding:0; margin:0;">
+                        <li>
+                          <a href="{%url 'listCustomers'%}"
+                             style="display:block; padding:10px 40px; color:#fff; text-decoration:none;">
+                             Manage Customer 
+                          </a>
+                        </li>
+                  
+                        <li>
+                          <a href="{%url 'AddACustomer'%}"
+                             style="display:block; padding:10px 40px; color:#fff; text-decoration:none;">
+                             Add a Customer
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  
+                  </ul>
+                  
+            </li>
+
+
+            
+            
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,32 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+<main class="content">
+<form method="post">
+    {% csrf_token %}
+
+    <div class="card">
+        <div class="card-header">
+            <h5>Edit Order</h5>
+        </div>
+
+        <div class="card-body">
+            <div class="mb-3">
+                {{ form.customer }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.total_price }}
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Status</label>
+                {{ form.status }}
+            </div>
+
+            <button class="btn btn-success">Update</button>
+        </div>
+    </div>
+</form>
+</main>
+{% endblock %}
