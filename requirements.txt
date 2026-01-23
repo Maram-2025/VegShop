@@ -1,4 +1,4 @@
-Django==6.0
+Django
 gunicorn
 anyio==4.9.0
 argon2-cffi==25.1.0
@@ -73,7 +73,6 @@ pycparser==2.22
 Pygments==2.19.2
 python-dateutil==2.9.0.post0
 python-json-logger==3.3.0
-pywinpty==2.0.15
 PyYAML==6.0.2
 pyzmq==27.0.0
 referencing==0.36.2
@@ -103,6 +102,7 @@ webencodings==0.5.1
 websocket-client==1.8.0
 widgetsnbextension==4.0.14
 whitenoise==6.6.0
+
 
 
 
